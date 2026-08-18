@@ -1,0 +1,10 @@
+# Override to build from local fork instead of pulling from Docker Hub.
+# Auto-loaded by `docker compose` when present.
+# Delete or rename this file to revert to the upstream image.
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.alpine
+    image: snipe-it-fork:latest
