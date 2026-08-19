@@ -94,6 +94,16 @@
 
                   @endcan
 
+                  @can('view', \App\Models\Key::class)
+                      <x-tabs.nav-item
+                              name="keys"
+                              icon="fas fa-key fa-fw"
+                              label="{{ trans('general.keys') }}"
+                              count="{{ $location->keys()->count() }}"
+                              tooltip="{{ trans('general.keys') }}"
+                      />
+                  @endcan
+
 
                   <x-tabs.consumable-tab count="{{ $location->consumables()->count() }}"/>
                   <x-tabs.component-tab count="{{ $location->components()->count() }}"/>
@@ -171,6 +181,14 @@
                   </x-tabs.pane>
                   @endcan
                   <!-- end assigned accessories tab pane -->
+
+                  <!-- start keys tab pane -->
+                  @can('view', \App\Models\Key::class)
+                  <x-tabs.pane name="keys">
+                      <x-table.keys :route="route('api.keys.index', ['location_id' => $location->id])"/>
+                  </x-tabs.pane>
+                  @endcan
+                  <!-- end keys tab pane -->
 
 
                   <!-- start consumables tab pane -->

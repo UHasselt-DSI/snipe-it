@@ -88,6 +88,9 @@ class IconHelper
             case 'accessories':
             case 'accessory':
                 return 'far fa-keyboard';
+            case 'keys':
+            case 'key':
+                return 'fa-solid fa-key';
             case 'components':
             case 'component':
                 return 'far fa-hdd';

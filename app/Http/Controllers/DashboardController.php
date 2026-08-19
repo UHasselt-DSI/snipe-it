@@ -7,6 +7,7 @@ use App\Models\Asset;
 use App\Models\Company;
 use App\Models\Component;
 use App\Models\Consumable;
+use App\Models\Key;
 use App\Models\License;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -42,6 +43,7 @@ class DashboardController extends Controller
             $counts['license'] = License::assetcount();
             $counts['consumable'] = Consumable::count();
             $counts['component'] = Component::count();
+            $counts['key'] = Key::count();
             $counts['user'] = Company::scopeCompanyables(auth()->user())->count();
             $counts['grand_total'] = $counts['asset'] + $counts['accessory'] + $counts['license'] + $counts['consumable'];
 

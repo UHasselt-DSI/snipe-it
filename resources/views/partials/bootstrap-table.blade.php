@@ -1487,6 +1487,26 @@
     });
     @endcan
 
+    @can('create', \App\Models\Key::class)
+    // Keys table buttons
+    window.keysButtons = () => ({
+        btnAdd: {
+            text: '{{ trans('general.create') }}',
+            icon: 'fa fa-plus',
+            event () {
+                window.location.href = '{{ route('keys.create') }}';
+            },
+            attributes: {
+                class: 'btn-warning',
+                title: '{{ trans('general.create') }}',
+                @if ($snipeSettings->shortcuts_enabled == 1)
+                accesskey: 'n'
+                @endif
+            }
+        },
+    });
+    @endcan
+
     @can('create', \App\Models\Depreciation::class)
     // Accessory table buttons
     window.depreciationButtons = () => ({
@@ -2493,6 +2513,10 @@
                 item_destination = 'companies';
                 item_icon = 'fa-regular fa-building';
             }
+            else if (value.type === 'key') {
+                item_destination = 'keys';
+                item_icon = 'fas fa-key';
+            }
 
             // display the username if it's checked out to a user, but don't do it if the username's there already
             if (value.username && !value.name.match('\\(') && !value.name.match('\\)')) {
@@ -2674,6 +2698,7 @@
         'groups',
         'hardware',
         'kits',
+        'keys',
         'licenses',
         'locations',
         'maintenances',
@@ -2720,6 +2745,16 @@
 
         actions += '</nobr>';
         return actions;
+    };
+
+    // Keys status formatter
+    window.keyStatusFormatter = function (value, row) {
+        if (value === 'available') {
+            return '<span class="label label-success">' + "{{ trans('admin/keys/table.available') }}" + '</span>';
+        } else if (value === 'checked_out') {
+            return '<span class="label label-warning">' + "{{ trans('admin/keys/table.checked_out') }}" + '</span>';
+        }
+        return value;
     };
 
     var child_formatters = [

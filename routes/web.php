@@ -867,7 +867,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('{object_type}/{id}/qr_code',
         [QrCodeController::class, 'show']
     )->name('qr_code/common')
-        ->where(['object_type' => 'accessories|assets|hardware|licenses|locations|models|companies|components|consumables|users']);
+        ->where(['object_type' => 'accessories|assets|hardware|licenses|locations|models|companies|components|consumables|users|keys']);
 
     /**
      * Uploaded files API routes

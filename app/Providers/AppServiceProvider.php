@@ -92,6 +92,7 @@ class AppServiceProvider extends ServiceProvider
         Maintenance::observe(MaintenanceObserver::class);
         Setting::observe(SettingObserver::class);
         User::observe(UserObserver::class);
+        \App\Models\Key::observe(\App\Observers\KeyObserver::class);
     }
 
     /**

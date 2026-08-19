@@ -48,7 +48,7 @@
         </a>
     </div><!-- ./col -->
 
-    <div class="col-lg-2 col-xs-6">
+    <div class="col-lg-2 col-xs-6" style="display:none;">
         <a href="{{ route('licenses.index') }}" aria-hidden="true">
             <!-- small license box -->
             <div class="dashboard small-box bg-maroon">
@@ -126,6 +126,25 @@
     </div><!-- ./col -->
 
     <div class="col-lg-2 col-xs-6">
+    <!-- small keys box -->
+        <a href="{{ route('keys.index') }}">
+            <div class="dashboard small-box bg-green">
+                <div class="inner">
+                    <h3> {{ number_format($counts['key']) }}</h3>
+                    <p>{{ trans('general.keys') }}</p>
+                </div>
+                <div class="icon" aria-hidden="true">
+                    <x-icon type="key" />
+                </div>
+                <span class="small-box-footer">
+                    {{ trans('general.view_all') }}
+                    <x-icon type="arrow-circle-right" />
+                </span>
+            </div>
+        </a>
+    </div><!-- ./col -->
+
+    <div class="col-lg-2 col-xs-6">
         <!-- small users box -->
         <a href="{{ route('users.index') }}">
             <div class="dashboard small-box bg-light-blue">
@@ -176,7 +195,7 @@
                             <a class="btn bg-teal" style="width: 100%" href="{{ route('hardware.create') }}">{{ trans('general.new_asset') }}</a>
                             @endcan
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-2" style="display:none;">
                             @can('create', \App\Models\License::class)
                                 <a class="btn bg-maroon" style="width: 100%" href="{{ route('licenses.create') }}">{{ trans('general.new_license') }}</a>
                             @endcan
@@ -194,6 +213,11 @@
                         <div class="col-md-2">
                             @can('create', \App\Models\Component::class)
                                 <a class="btn bg-yellow" style="width: 100%" href="{{ route('components.create') }}">{{ trans('general.new_component') }}</a>
+                            @endcan
+                        </div>
+                        <div class="col-md-2">
+                            @can('create', \App\Models\Key::class)
+                                <a class="btn bg-green" style="width: 100%" href="{{ route('keys.create') }}">{{ trans('general.new_key') }}</a>
                             @endcan
                         </div>
                         <div class="col-md-2">

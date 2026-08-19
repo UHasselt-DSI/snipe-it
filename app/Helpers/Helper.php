@@ -1822,6 +1822,7 @@ class Helper
                 'Users' => route('users.index'),
                 'Licenses' => route('licenses.index'),
                 'Accessories' => route('accessories.index'),
+                'Keys' => route('keys.index'),
                 'Components' => route('components.index'),
                 'Consumables' => route('consumables.index'),
                 'Maintenances' => route('maintenances.index'),
@@ -1848,6 +1849,7 @@ class Helper
                 'Users' => redirect()->route('users.show', $id ?? $item_id),
                 'Licenses' => redirect()->route('licenses.show', $id ?? $item_id),
                 'Accessories' => redirect()->route('accessories.show', $id ?? $item_id),
+                'Keys' => redirect()->route('keys.show', $id ?? $item_id),
                 'Components' => redirect()->route('components.show', $id ?? $item_id),
                 'Consumables' => redirect()->route('consumables.show', $id ?? $item_id),
             };

@@ -30,7 +30,7 @@ use Livewire\Component;
  */
 class CheckoutTargetPanel extends Component
 {
-    private const TYPES = ['assets', 'licenses', 'accessories', 'consumables', 'components'];
+    private const TYPES = ['assets', 'licenses', 'accessories', 'consumables', 'components', 'keys'];
 
     private const TARGET_TYPES = ['user', 'asset', 'location'];
 
@@ -118,6 +118,7 @@ class CheckoutTargetPanel extends Component
             'licenses:user' => $target->licenses,
             'accessories:user' => $target->accessories,
             'consumables:user' => $target->consumables,
+            'keys:user' => $target->keys,
 
             'assets:asset' => $target->assignedAssets,
             'licenses:asset' => $target->licenses,
@@ -153,6 +154,7 @@ class CheckoutTargetPanel extends Component
             'accessories' => trans('general.accessories'),
             'consumables' => trans('general.consumables'),
             'components' => trans('general.components'),
+            'keys' => trans('general.keys'),
         };
     }
 

@@ -17,6 +17,7 @@ class QrCodeController extends Controller
         'components' => 'components.show',
         'consumables' => 'consumables.show',
         'hardware' => 'hardware.show',
+        'keys' => 'keys.show',
         'licenses' => 'licenses.show',
         'locations' => 'locations.show',
         'models' => 'models.show',
