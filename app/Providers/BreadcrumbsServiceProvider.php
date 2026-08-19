@@ -15,6 +15,7 @@ use App\Models\CustomFieldset;
 use App\Models\Department;
 use App\Models\Depreciation;
 use App\Models\Group;
+use App\Models\Key;
 use App\Models\License;
 use App\Models\Location;
 use App\Models\Maintenance;
@@ -166,6 +167,34 @@ class BreadcrumbsServiceProvider extends ServiceProvider
 
         Breadcrumbs::for('clone/accessories', fn (Trail $trail, Accessory $accessory) => $trail->parent('accessories.show', $accessory)
             ->push(trans('general.clone'))
+        );
+
+        /**
+         * Keys Breadcrumbs
+         */
+        Breadcrumbs::for('keys.index', fn (Trail $trail) => $trail->parent('home', route('home'))
+            ->push(trans('general.keys'), route('keys.index'))
+        );
+
+        Breadcrumbs::for('keys.create', fn (Trail $trail) => $trail->parent('keys.index', route('keys.index'))
+            ->push(trans('general.create'), route('keys.create'))
+        );
+
+        Breadcrumbs::for('keys.show', fn (Trail $trail, Key $key) => $trail->parent('keys.index', route('keys.index'))
+            ->push($key->key_id, route('keys.show', $key))
+        );
+
+        Breadcrumbs::for('keys.edit', fn (Trail $trail, Key $key) => $trail->parent('keys.index', route('keys.index'))
+            ->push($key->key_id, route('keys.show', $key))
+            ->push(trans('general.update'))
+        );
+
+        Breadcrumbs::for('keys.checkout.show', fn (Trail $trail, Key $key) => $trail->parent('keys.show', $key)
+            ->push(trans('general.checkout'))
+        );
+
+        Breadcrumbs::for('keys.checkin.show', fn (Trail $trail, Key $key) => $trail->parent('keys.show', $key)
+            ->push(trans('general.checkin'))
         );
 
         /**

@@ -23,7 +23,7 @@ nothing else, etc makes for a really awkward display view --}}
         </a>
     </div>
 
-    <div class="col-lg-2 col-xs-6">
+    <div class="col-lg-2 col-xs-6" style="display:none;">
         <a href="{{ route('licenses.index') }}" aria-hidden="true">
             <div class="dashboard small-box bg-maroon">
                 <div class="inner">
@@ -86,6 +86,24 @@ nothing else, etc makes for a really awkward display view --}}
                 </div>
                 <div class="icon" aria-hidden="true">
                     <x-icon type="components"/>
+                </div>
+                <span class="small-box-footer">
+                    {{ trans('general.view_all') }}
+                    <x-icon type="arrow-circle-right"/>
+                </span>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-lg-2 col-xs-6">
+        <a href="{{ route('keys.index') }}">
+            <div class="dashboard small-box bg-green">
+                <div class="inner">
+                    <h3>{{ number_format($counts['key']) }}</h3>
+                    <p>{{ trans('general.keys') }}</p>
+                </div>
+                <div class="icon" aria-hidden="true">
+                    <x-icon type="key"/>
                 </div>
                 <span class="small-box-footer">
                     {{ trans('general.view_all') }}

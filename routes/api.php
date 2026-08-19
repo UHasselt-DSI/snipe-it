@@ -253,6 +253,42 @@ Route::group(['prefix' => 'v1', 'middleware' => ['api', 'api-throttle:api']], fu
     );
 
     /**
+     * Keys API routes
+     */
+    Route::group(['prefix' => 'keys'], function () {
+
+        Route::get('{key}/history', [
+            Api\KeysController::class,
+            'history',
+        ])->name('api.keys.history')->withTrashed();
+
+        Route::post('{key}/checkout', [
+            Api\KeysController::class,
+            'checkout',
+        ])->name('api.keys.checkout');
+
+        Route::post('{key}/checkin', [
+            Api\KeysController::class,
+            'checkin',
+        ])->name('api.keys.checkin');
+
+    }); // end keys group
+
+    Route::resource('keys',
+        Api\KeysController::class,
+        ['names' => [
+            'index' => 'api.keys.index',
+            'show' => 'api.keys.show',
+            'update' => 'api.keys.update',
+            'store' => 'api.keys.store',
+            'destroy' => 'api.keys.destroy',
+        ],
+            'except' => ['create', 'edit'],
+            'parameters' => ['key' => 'key_id'],
+        ]
+    );
+
+    /**
      * Categories API routes
      */
     Route::group(['prefix' => 'categories'], function () {

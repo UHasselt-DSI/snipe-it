@@ -286,6 +286,16 @@ class Location extends SnipeModel
     }
 
     /**
+     * Establishes the key -> location relationship
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     */
+    public function keys()
+    {
+        return $this->hasMany(Key::class, 'location_id');
+    }
+
+    /**
      * Find the parent of a location
      *
      * @author A. Gianotto <snipe@snipe.net>

@@ -1297,6 +1297,14 @@ class User extends SnipeModel implements AuthenticatableContract, AuthorizableCo
     }
 
     /**
+     * Establishes the user -> keys relationship
+     */
+    public function keys()
+    {
+        return $this->hasMany(Key::class, 'assigned_to')->withTrashed();
+    }
+
+    /**
      * Establishes the user -> consumables relationship
      *
      * @author A. Gianotto <snipe@snipe.net>

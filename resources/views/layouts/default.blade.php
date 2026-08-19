@@ -148,6 +148,14 @@
                                     </a>
                                 </li>
                             @endcan
+                            @can('index', \App\Models\Key::class)
+                                <li aria-hidden="true"{!! (request()->is('keys*') ? ' class="active" aria-current="page"' : '') !!}>
+                                    <a href="{{ route('keys.index') }}" {{$snipeSettings->shortcuts_enabled == 1 ? "accesskey=4" : ''}} tabindex="-1" data-tooltip="true" data-placement="bottom" data-title="{{ trans('general.keys') }}">
+                                        <x-icon type="keys" class="fa-fw" />
+                                        <span class="sr-only">{{ trans('general.keys') }}</span>
+                                    </a>
+                                </li>
+                            @endcan
                             @can('index', \App\Models\Consumable::class)
                                 <li aria-hidden="true"{!! (request()->is('consumables*') ? ' class="active" aria-current="page"' : '') !!}>
                                     <a href="{{ url('consumables') }}" {{$snipeSettings->shortcuts_enabled == 1 ? "accesskey=4" : ''}} tabindex="-1" data-tooltip="true" data-placement="bottom" data-title="{{ trans('general.consumables') }}">
@@ -222,6 +230,14 @@
                                                 <a href="{{ route('accessories.create') }}" tabindex="-1">
                                                     <x-icon type="accessories" class="fa-fw" />
                                                     {{ trans('general.accessory') }}
+                                                </a>
+                                            </li>
+                                        @endcan
+                                        @can('create', \App\Models\Key::class)
+                                            <li {!! (request()->is('keys/create') ? 'class="active"' : '') !!}>
+                                                <a href="{{ route('keys.create') }}" tabindex="-1">
+                                                    <x-icon type="keys" class="fa-fw" />
+                                                    {{ trans('general.key') }}
                                                 </a>
                                             </li>
                                         @endcan
@@ -586,6 +602,14 @@
                                 <a href="{{ route('accessories.index') }}">
                                     <x-icon type="accessories" class="fa-fw" />
                                     <span>{{ trans('general.accessories') }}</span>
+                                </a>
+                            </li>
+                        @endcan
+                        @can('index', \App\Models\Key::class)
+                            <li id="keys-sidenav-option"{!! (request()->is('keys*') ? ' class="active" aria-current="page"' : '') !!}>
+                                <a href="{{ route('keys.index') }}">
+                                    <x-icon type="keys" class="fa-fw" />
+                                    <span>{{ trans('general.keys') }}</span>
                                 </a>
                             </li>
                         @endcan

@@ -32,6 +32,7 @@
                     <x-tabs.license-tab count="{{ $user->licenses()->count() }}"/>
                     <x-tabs.accessory-tab count="{{ $user->accessories()->count() }}"/>
                     <x-tabs.consumable-tab count="{{ $user->consumables()->count() }}"/>
+                    <x-tabs.keys-tab count="{{ $user->keys()->count() }}"/>
                     <x-tabs.maintenance-tab count="{{ $user->assignedMaintenances()->count() }}"/>
                     <x-tabs.files-tab :item="$user" count="{{ $user->uploads()->count() }}"/>
                     <x-tabs.eula-tab count="{{ $user->eulas()->count() }}"/>
@@ -386,6 +387,54 @@
                             :presenter="\App\Presenters\UserPresenter::consumablesDataTableLayout()"
                             export_filename="export-consumable-{{ str_slug($user->username) }}-{{ date('Y-m-d') }}"
                         />
+                        @endcan
+
+                    </x-tabs.pane>
+
+                    {{-- Keys tab --}}
+                    <x-tabs.pane name="keys" :count="$user->keys()->count()">
+                        <x-slot:table_header>
+                            {{ trans('general.keys') }}
+                        </x-slot:table_header>
+
+                        @can('view', \App\Models\Key::class)
+                        <table
+                            data-cookie-id-table="userKeysTable"
+                            data-id-table="userKeysTable"
+                            id="userKeysTable"
+                            data-buttons="keysButtons"
+                            data-side-pagination="client"
+                            data-sort-name="key_id"
+                            class="table table-striped snipe-table table-hover"
+                            data-export-options='{
+                    "fileName": "export-keys-{{ str_slug($user->username) }}-{{ date('Y-m-d') }}",
+                    "ignoreColumn": ["actions","image","change","checkbox","checkincheckout","delete","download","icon"]
+                    }'>
+                            <thead>
+                                <tr>
+                                    <th scope="col">{{ trans('admin/keys/table.key_id') }}</th>
+                                    <th scope="col">{{ trans('admin/keys/table.status') }}</th>
+                                    <th scope="col">{{ trans('admin/keys/table.location') }}</th>
+                                    <th scope="col">{{ trans('general.notes') }}</th>
+                                    <th scope="col" class="hidden-print">{{ trans('general.action') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($user->keys()->withTrashed()->get() as $key)
+                                    <tr>
+                                        <td><a href="{{ route('keys.show', $key->id) }}">{{ $key->key_id }}</a></td>
+                                        <td>{{ $key->isAvailable() ? trans('admin/keys/table.available') : trans('admin/keys/table.checked_out') }}</td>
+                                        <td>@if($key->location)<a href="{{ route('locations.show', $key->location->id) }}">{{ $key->location->name }}</a>@endif</td>
+                                        <td>{{ $key->notes }}</td>
+                                        <td class="hidden-print">
+                                            @can('checkin', $key)
+                                                <a href="{{ route('keys.checkin.show', $key->id) }}" class="btn bg-purple btn-sm hidden-print">{{ trans('general.checkin') }}</a>
+                                            @endcan
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                         @endcan
 
                     </x-tabs.pane>

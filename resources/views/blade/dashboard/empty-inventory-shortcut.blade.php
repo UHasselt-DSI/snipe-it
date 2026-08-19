@@ -21,7 +21,7 @@
                             <a class="btn bg-teal" style="width: 100%" href="{{ route('hardware.create') }}">{{ trans('general.new_asset') }}</a>
                         @endcan
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2" style="display:none;">
                         @can('create', \App\Models\License::class)
                             <a class="btn bg-maroon" style="width: 100%" href="{{ route('licenses.create') }}">{{ trans('general.new_license') }}</a>
                         @endcan
@@ -39,6 +39,11 @@
                     <div class="col-md-2">
                         @can('create', \App\Models\Component::class)
                             <a class="btn bg-yellow" style="width: 100%" href="{{ route('components.create') }}">{{ trans('general.new_component') }}</a>
+                        @endcan
+                    </div>
+                    <div class="col-md-2">
+                        @can('create', \App\Models\Key::class)
+                            <a class="btn bg-green" style="width: 100%" href="{{ route('keys.create') }}">{{ trans('general.new_key') }}</a>
                         @endcan
                     </div>
                     <div class="col-md-2">

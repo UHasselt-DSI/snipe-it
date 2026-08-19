@@ -6,6 +6,7 @@ use App\Models\Accessory;
 use App\Models\Asset;
 use App\Models\Component as SnipeComponent;
 use App\Models\Consumable;
+use App\Models\Key;
 use App\Models\License;
 use App\Models\Location;
 use App\Models\User;
@@ -33,7 +34,7 @@ use Livewire\Component;
  */
 class CheckoutTargetPanel extends Component
 {
-    private const TYPES = ['assets', 'licenses', 'accessories', 'consumables', 'components'];
+    private const TYPES = ['assets', 'licenses', 'accessories', 'consumables', 'components', 'keys'];
 
     private const TARGET_TYPES = ['user', 'asset', 'location'];
 
@@ -114,6 +115,7 @@ class CheckoutTargetPanel extends Component
             'accessories' => Accessory::class,
             'consumables' => Consumable::class,
             'components' => SnipeComponent::class,
+            'keys' => Key::class,
         ];
         if (! array_key_exists($this->type, $itemClasses) || ! Gate::allows('view', $itemClasses[$this->type])) {
             return collect();
@@ -144,6 +146,7 @@ class CheckoutTargetPanel extends Component
             'licenses:user' => $target->licenses()->orderByPivot('created_at', 'desc')->get(),
             'accessories:user' => $target->accessories()->reorder('accessories_checkout.created_at', 'desc')->get(),
             'consumables:user' => $target->consumables()->orderByPivot('created_at', 'desc')->get(),
+            'keys:user' => $target->keys,
 
             'assets:asset' => $target->assignedAssets()->reorder('last_checkout', 'desc')->get(),
             'licenses:asset' => $target->licenses()->orderByPivot('created_at', 'desc')->get(),

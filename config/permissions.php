@@ -116,6 +116,34 @@ return [
 
     ],
 
+    'Keys' => [
+        [
+            'permission' => 'keys.view',
+            'display' => true,
+        ],
+        [
+            'permission' => 'keys.create',
+            'display' => true,
+        ],
+        [
+            'permission' => 'keys.edit',
+            'display' => true,
+        ],
+        [
+            'permission' => 'keys.delete',
+            'display' => true,
+        ],
+        [
+            'permission' => 'keys.checkout',
+            'display' => true,
+        ],
+        [
+            'permission' => 'keys.checkin',
+            'display' => true,
+        ],
+
+    ],
+
     'Consumables' => [
         [
             'permission' => 'consumables.view',

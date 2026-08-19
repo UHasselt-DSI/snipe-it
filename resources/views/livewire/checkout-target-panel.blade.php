@@ -141,6 +141,25 @@
                                 </tbody>
                                 @break
 
+                            @case('keys')
+                                <thead>
+                                    <tr>
+                                        <th scope="col">{{ trans('admin/keys/table.key_id') }}</th>
+                                        <th scope="col">{{ trans('admin/keys/table.status') }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($items as $key)
+                                        <tr>
+                                            <td><a href="{{ route('keys.show', $key->id) }}">{{ $key->key_id }}</a></td>
+                                            <td>{{ $key->isAvailable() ? trans('admin/keys/table.available') : trans('admin/keys/table.checked_out') }}</td>
+                                        </tr>
+                                    @empty
+                                        <tr><td colspan="2">{{ trans('admin/users/message.nothing_currently_assigned') }}</td></tr>
+                                    @endforelse
+                                </tbody>
+                                @break
+
                         @endswitch
                     </table>
                 </div>

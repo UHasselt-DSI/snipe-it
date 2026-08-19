@@ -11,6 +11,7 @@ use App\Models\Company;
 use App\Models\Component;
 use App\Models\Consumable;
 use App\Models\Department;
+use App\Models\Key;
 use App\Models\License;
 use App\Models\Location;
 use App\Models\Maintenance;
@@ -47,6 +48,7 @@ enum ActivityItemType: string
     case Component = 'component';
     case Consumable = 'consumable';
     case Department = 'department';
+    case Key = 'key';
     case License = 'license';
     case Location = 'location';
     case Maintenance = 'maintenance';
@@ -71,6 +73,7 @@ enum ActivityItemType: string
             self::Component => Component::class,
             self::Consumable => Consumable::class,
             self::Department => Department::class,
+            self::Key => Key::class,
             self::License => License::class,
             self::Location => Location::class,
             self::Maintenance => Maintenance::class,

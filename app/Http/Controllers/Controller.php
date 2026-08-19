@@ -31,6 +31,7 @@ use App\Models\Company;
 use App\Models\Component;
 use App\Models\Consumable;
 use App\Models\Department;
+use App\Models\Key;
 use App\Models\License;
 use App\Models\Location;
 use App\Models\Maintenance;
@@ -51,6 +52,7 @@ abstract class Controller extends BaseController
         'accessories' => Accessory::class,
         'companies' => Company::class,
         'departments' => Department::class,
+        'keys' => Key::class,
         'maintenances' => Maintenance::class,
         'assets' => Asset::class,
         'audits' => Asset::class,

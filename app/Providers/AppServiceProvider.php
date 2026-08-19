@@ -93,6 +93,7 @@ class AppServiceProvider extends ServiceProvider
         Maintenance::observe(MaintenanceObserver::class);
         Setting::observe(SettingObserver::class);
         User::observe(UserObserver::class);
+        \App\Models\Key::observe(\App\Observers\KeyObserver::class);
 
         // Defense against sync-adapter base URLs pointing at the vendor's
         // web console instead of their API. A wrong URL commonly returns
