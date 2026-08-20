@@ -31,6 +31,7 @@ return [
     'show_current' => 'Show Current Users',
     'show_deleted' => 'Show Deleted Users',
     'title' => 'Title',
+    'rank' => 'Rank',
     'to_restore_them' => 'to restore them.',
     'total_assets_cost' => 'Total Cost',
     'updateuser' => 'Update User',

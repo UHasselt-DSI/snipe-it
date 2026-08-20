@@ -132,6 +132,10 @@
                                     {{ $user->jobtitle }}
                                 </x-data-row>
 
+                                <x-data-row :label="trans('admin/users/table.rank')" copy_what="rank">
+                                    {{ $user->rank }}
+                                </x-data-row>
+
                                 <x-data-row :label="trans('general.groups')" copy_what="groups">
                                     @if ($user->groups->count() > 0)
                                         @foreach ($user->groups as $group)

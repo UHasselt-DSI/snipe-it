@@ -76,6 +76,7 @@ class UsersTransformer
                 'name' => e($user->manager->display_name),
             ] : null,
             'jobtitle' => ($user->jobtitle) ? e($user->jobtitle) : null,
+            'rank' => ($user->rank) ? e($user->rank) : null,
             'vip' => ($user->vip == '1') ? true : false,
             'phone' => ($user->phone) ? e($user->phone) : null,
             'mobile' => ($user->mobile) ? e($user->mobile) : null,

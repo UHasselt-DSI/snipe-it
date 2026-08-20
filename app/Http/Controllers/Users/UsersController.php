@@ -130,6 +130,7 @@ class UsersController extends Controller
         $user->employee_num = $request->input('employee_num');
         $user->activated = $request->input('activated', 0);
         $user->jobtitle = $request->input('jobtitle');
+        $user->rank = $request->input('rank', null);
         $user->phone = $request->input('phone');
         $user->mobile = $request->input('mobile');
         $user->location_id = $request->input('location_id', null);
@@ -309,6 +310,7 @@ class UsersController extends Controller
         $user->locale = $request->input('locale');
         $user->employee_num = $request->input('employee_num');
         $user->jobtitle = $request->input('jobtitle', null);
+        $user->rank = $request->input('rank', null);
         $user->phone = $request->input('phone');
         $user->mobile = $request->input('mobile');
         $user->location_id = $request->input('location_id', null);
@@ -573,6 +575,7 @@ class UsersController extends Controller
                 strtolower(trans('general.id')),
                 trans('admin/companies/table.title'),
                 trans('admin/users/table.title'),
+                'Rank',
                 trans('general.employee_number'),
                 trans('admin/users/table.first_name'),
                 trans('admin/users/table.last_name'),
@@ -653,6 +656,7 @@ class UsersController extends Controller
                             $user->id,
                             $user->companies->pluck('name')->implode('|'),
                             $user->jobtitle,
+                            $user->rank,
                             $user->employee_num,
                             $user->first_name,
                             $user->last_name,

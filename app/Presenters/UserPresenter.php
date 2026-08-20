@@ -123,6 +123,16 @@ class UserPresenter extends Presenter
                 'formatter' => 'usersLinkFormatter',
             ],
             [
+                'field' => 'rank',
+                'scope' => 'col',
+                'searchable' => true,
+                'sortable' => true,
+                'switchable' => true,
+                'title' => trans('admin/users/table.rank'),
+                'visible' => false,
+                'formatter' => 'usersLinkFormatter',
+            ],
+            [
                 'field' => 'vip',
                 'scope' => 'col',
                 'searchable' => false,

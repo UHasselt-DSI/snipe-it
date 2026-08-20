@@ -481,6 +481,42 @@
                               @endpush
 
 
+                              <!-- Rank -->
+                              <x-form.row
+                                  :label="trans('admin/users/table.rank')"
+                                  name="rank"
+                                  :item="$user"
+                                  :help_text="trans('admin/users/general.rank_help')"
+                              >
+                                  <x-slot:input>
+                                      @php
+                                          $current_rank = old('rank', $user->rank);
+                                          $rank_predefined = [
+                                            'ZAP - Tenured Academic Staff',
+                                            'ZAP - Tenured Track Academic Staff',
+                                            'AAP - Assistant Academic Staff - Temporary Statutory',
+                                            'BAP - Non-Statutory Academic Staff - Contractual',
+                                            'ATP - Administrative Technical Staff - Permanent Statutory',
+                                            'ATP - Administrative Technical Staff - Contractual',
+                                            'PhD Fellow / Scholar (Bursaal)',
+                                            'Postdoctoral Fellow / Scholar (Bursaal)',
+                                            'Visiting Academic / Guest Professor',
+                                            'Guest / External Researcher',
+                                            'Student Employee'
+                                          ];
+                                      @endphp
+                                      <select class="js-data-select-tags" name="rank" id="rank" style="width: 100%">
+                                          <option value="">Choose a rank or type a custom one...</option>
+                                          @foreach ($rank_predefined as $r)
+                                              <option value="{{ $r }}" {{ $current_rank === $r ? 'selected' : '' }}>{{ $r }}</option>
+                                          @endforeach
+                                          @if ($current_rank && !in_array($current_rank, $rank_predefined, true))
+                                              <option value="{{ $current_rank }}" selected>{{ $current_rank }}</option>
+                                          @endif
+                                      </select>
+                                  </x-slot:input>
+                              </x-form.row>
+
                               <!-- Manager -->
                               <x-input.user-select
                                   :label="trans('admin/users/table.manager')"

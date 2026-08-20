@@ -92,6 +92,7 @@ class UserImporter extends ItemImporter
         $this->setItemFromCsvIfPresent($row, 'mobile', 'mobile_number');
         $this->setItemFromCsvIfPresent($row, 'website');
         $this->setItemFromCsvIfPresent($row, 'jobtitle');
+        $this->setItemFromCsvIfPresent($row, 'rank');
         $this->setItemFromCsvIfPresent($row, 'address');
         $this->setItemFromCsvIfPresent($row, 'city');
         $this->setItemFromCsvIfPresent($row, 'state');

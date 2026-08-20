@@ -1,4 +1,4 @@
-﻿First Name,Last Name,Email,Username,Display Name,Activated,Location,Address,City,State,Country,Postal Code,Website,Phone,Job Title,Notes,Employee Number,Company,Manager,Remote,VIP,Start Date,End Date,Gravatar
+﻿First Name,Last Name,Email,Username,Display Name,Activated,Location,Address,City,State,Country,Postal Code,Website,Phone,Job Title,Rank,Notes,Employee Number,Company,Manager,Remote,VIP,Start Date,End Date,Gravatar
 Reagen,Tenant,rtenant0@example.org,rtenant0,Heywood,TRUE,"Braun, Ullrich and O'Hara",0406 Emmet Drive,,,,,https://netvibes.com,895-137-2034,Nurse Practicioner,ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque arcu libero rutrum,,,Reagen Tenant,TRUE,TRUE,2022-03-18,2022-12-04,rtenant0@example.org
 Kenneth,Lefeuvre,klefeuvre1@example.org,klefeuvre1,,FALSE,Mueller LLC,404 Dennis Alley,,,,,,,Senior Quality Engineer,lacus at turpis donec posuere metus vitae ipsum,,,,TRUE,,,,
 Kiel,Eland,keland2@example.org,keland2,,FALSE,"Mayer, Jacobi and Gibson",3058 Declaration Park,,,,,,,Web Developer I,eu est congue elementum in hac habitasse platea dictumst morbi vestibulum velit id,,,,TRUE,,,,
