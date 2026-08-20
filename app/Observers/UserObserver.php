@@ -29,6 +29,7 @@ class UserObserver
             'location_id',
             'phone',
             'jobtitle',
+            'rank',
             'manager_id',
             'employee_num',
             'username',

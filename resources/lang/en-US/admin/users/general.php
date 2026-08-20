@@ -65,6 +65,7 @@ return [
     'floater_mode_warning_help' => 'Floater mode is enabled. A user with no company assignment will be able to see every record in the system. Only superusers can save a user with no company when floater mode is enabled.',
     'no_companies_assigned' => '(No companies assigned)',
     'jobtitle_help' => 'Select a predefined role from the dropdown, or type a custom job title.',
+    'rank_help' => 'Select a predefined rank from the dropdown, or type a custom one.',
     'cannot_edit_privileged_user_companies' => 'Only an admin or super admin can modify the company assignments of an admin or super admin user.',
     'cannot_manage_companies_without_membership' => 'Full multiple company support with floater mode is enabled, so you must be assigned to at least one company before you can manage another user\'s company assignments.',
     'impersonate_user' => 'Login as :name',

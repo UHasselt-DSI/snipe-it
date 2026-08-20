@@ -94,6 +94,7 @@ class User extends SnipeModel implements AuthenticatableContract, AuthorizableCo
         'employee_num',
         'first_name',
         'jobtitle',
+        'rank',
         'last_name',
         'display_name',
         'ldap_import',
@@ -151,6 +152,7 @@ class User extends SnipeModel implements AuthenticatableContract, AuthorizableCo
         'state' => 'nullable|string|max:191',
         'country' => 'min:2|max:191|nullable',
         'zip' => 'max:10|nullable',
+        'rank' => 'nullable|string|max:191',
         'vip' => 'boolean',
         'remote' => 'boolean',
         'activated' => 'boolean',
@@ -170,6 +172,7 @@ class User extends SnipeModel implements AuthenticatableContract, AuthorizableCo
         'employee_num',
         'first_name',
         'jobtitle',
+        'rank',
         'last_name',
         'locale',
         'mobile',
@@ -1798,6 +1801,7 @@ class User extends SnipeModel implements AuthenticatableContract, AuthorizableCo
             ->orWhere('users.country', 'LIKE', '%'.$search.'%')
             ->orWhere('users.phone', 'LIKE', '%'.$search.'%')
             ->orWhere('users.jobtitle', 'LIKE', '%'.$search.'%')
+            ->orWhere('users.rank', 'LIKE', '%'.$search.'%')
             ->orWhere('users.employee_num', 'LIKE', '%'.$search.'%')
             ->orWhere('users.username', 'LIKE', '%'.$search.'%')
             ->orWhere('users.display_name', 'LIKE', '%'.$search.'%')

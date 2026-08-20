@@ -177,6 +177,7 @@ class BulkUsersController extends Controller
             ->conditionallyAddItem('autoassign_licenses')
             ->conditionallyAddItem('phone')
             ->conditionallyAddItem('jobtitle')
+            ->conditionallyAddItem('rank')
             ->conditionallyAddItem('address')
             ->conditionallyAddItem('state')
             ->conditionallyAddItem('country')
@@ -233,6 +234,10 @@ class BulkUsersController extends Controller
 
         if ($request->input('null_jobtitle') == '1') {
             $this->update_array['jobtitle'] = null;
+        }
+
+        if ($request->input('null_rank') == '1') {
+            $this->update_array['rank'] = null;
         }
 
         if ($request->input('null_employee_num') == '1') {

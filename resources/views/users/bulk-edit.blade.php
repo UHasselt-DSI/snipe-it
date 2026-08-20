@@ -131,10 +131,59 @@
                 />
 
                 {{-- Job title --}}
-                <x-form.row :label="trans('admin/users/table.title')" name="jobtitle" type="text" input_div_class="col-md-4"/>
+                <x-form.row :label="trans('admin/users/table.title')" name="jobtitle" input_div_class="col-md-4">
+                    <x-slot:input>
+                        <select class="js-data-select-tags" name="jobtitle" id="jobtitle" style="width: 100%">
+                            <option value="">Choose a title or type a custom one...</option>
+                            <option value="Full Professor">Full Professor</option>
+                            <option value="Professor">Professor</option>
+                            <option value="Associate Professor">Associate Professor</option>
+                            <option value="Lecturer">Lecturer</option>
+                            <option value="Researcher Coordinator">Researcher Coordinator</option>
+                            <option value="Researcher Expert">Researcher Expert</option>
+                            <option value="Researcher">Researcher</option>
+                            <option value="IOF Expert Level 1">IOF Expert Level 1</option>
+                            <option value="IOF Expert Level 2">IOF Expert Level 2</option>
+                            <option value="Teaching Assistant">Teaching Assistant</option>
+                            <option value="Doctor Assistant">Doctor Assistant</option>
+                            <option value="Assistant">Assistant</option>
+                            <option value="Management Support">Management Support</option>
+                            <option value="Administrative Support">Administrative Support</option>
+                            <option value="Technical Support">Technical Support</option>
+                            <option value="PhD Student">PhD Student</option>
+                            <option value="Postdoc">Postdoc</option>
+                            <option value="Guest: Research Fellow">Guest: Research Fellow</option>
+                            <option value="Visitor">Visitor</option>
+                        </select>
+                    </x-slot:input>
+                </x-form.row>
                 <x-form.checkbox-row
                     name="null_jobtitle"
                     :label="trans_choice('general.set_users_field_to_null', count($users), ['field' => trans('admin/users/table.title'), 'user_count' => count($users)])"
+                />
+
+                {{-- Rank --}}
+                <x-form.row :label="trans('admin/users/table.rank')" name="rank" input_div_class="col-md-4">
+                    <x-slot:input>
+                        <select class="js-data-select-tags" name="rank" id="rank" style="width: 100%">
+                            <option value="">Choose a rank or type a custom one...</option>
+                            <option value="ZAP - Tenured Academic Staff">ZAP - Tenured Academic Staff</option>
+                            <option value="ZAP - Tenured Track Academic Staff">ZAP - Tenured Track Academic Staff</option>
+                            <option value="AAP - Assistant Academic Staff - Temporary Statutory">AAP - Assistant Academic Staff - Temporary Statutory</option>
+                            <option value="BAP - Non-Statutory Academic Staff - Contractual">BAP - Non-Statutory Academic Staff - Contractual</option>
+                            <option value="ATP - Administrative Technical Staff - Permanent Statutory">ATP - Administrative Technical Staff - Permanent Statutory</option>
+                            <option value="ATP - Administrative Technical Staff - Contractual">ATP - Administrative Technical Staff - Contractual</option>
+                            <option value="PhD Fellow / Scholar (Bursaal)">PhD Fellow / Scholar (Bursaal)</option>
+                            <option value="Postdoctoral Fellow / Scholar (Bursaal)">Postdoctoral Fellow / Scholar (Bursaal)</option>
+                            <option value="Visiting Academic / Guest Professor">Visiting Academic / Guest Professor</option>
+                            <option value="Guest / External Researcher">Guest / External Researcher</option>
+                            <option value="Student Employee">Student Employee</option>
+                        </select>
+                    </x-slot:input>
+                </x-form.row>
+                <x-form.checkbox-row
+                    name="null_rank"
+                    :label="trans_choice('general.set_users_field_to_null', count($users), ['field' => trans('admin/users/table.rank'), 'user_count' => count($users)])"
                 />
 
                 {{-- Employee number: clear-only, since employee numbers are
@@ -319,4 +368,20 @@
 
     </x-container>
 
-@stop
+@endsection
+
+@push('js')
+<script>
+    $(document).ready(function () {
+        // Select2 init with tags for custom input on dropdowns
+        $('.js-data-select-tags').select2({
+            placeholder: function () {
+                return $(this).find('option:first').text();
+            },
+            allowClear: true,
+            tags: true,
+            tokenSeparators: [','],
+        });
+    });
+</script>
+@endpush
