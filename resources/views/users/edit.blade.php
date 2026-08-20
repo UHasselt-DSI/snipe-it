@@ -439,7 +439,46 @@
                                   :label="trans('admin/users/table.title')"
                                   name="jobtitle"
                                   :item="$user"
-                              />
+                                  :help_text="trans('admin/users/general.jobtitle_help')"
+                              >
+                                  <x-slot:input>
+                                      @php
+                                          $current = old('jobtitle', $user->jobtitle);
+                                          $predefined = [
+                                              'Full Professor', 'Professor', 'Associate Professor', 'Lecturer',
+                                              'Researcher Coordinator', 'Researcher Expert', 'Researcher',
+                                              'IOF Expert Level 1', 'IOF Expert Level 2',
+                                              'Teaching Assistant', 'Doctor Assistant', 'Assistant',
+                                              'Management Support', 'Administrative Support', 'Technical Support',
+                                              'PhD Student', 'Postdoc', 'Guest: Research Fellow', 'Visitor',
+                                          ];
+                                      @endphp
+                                      <select class="js-data-select-tags" name="jobtitle" id="jobtitle" style="width: 100%">
+                                          <option value="">Choose a title or type a custom one...</option>
+                                          @foreach ($predefined as $title)
+                                              <option value="{{ $title }}" {{ $current === $title ? 'selected' : '' }}>{{ $title }}</option>
+                                          @endforeach
+                                          @if ($current && !in_array($current, $predefined, true))
+                                              <option value="{{ $current }}" selected>{{ $current }}</option>
+                                          @endif
+                                      </select>
+                                  </x-slot:input>
+                              </x-form.row>
+
+                              @push('js')
+                              <script>
+                                  $(document).ready(function () {
+                                      $('.js-data-select-tags').select2({
+                                          placeholder: function () {
+                                              return $(this).find('option:first').text();
+                                          },
+                                          allowClear: true,
+                                          tags: true,
+                                          tokenSeparators: [','],
+                                      });
+                                  });
+                              </script>
+                              @endpush
 
 
                               <!-- Manager -->
